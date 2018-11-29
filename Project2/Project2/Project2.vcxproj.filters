@@ -34,8 +34,5 @@
     <EmbeddedResource Include="SimPlanner.resx">
       <Filter>리소스 파일</Filter>
     </EmbeddedResource>
-    <EmbeddedResource Include="WritePlan.resx">
-      <Filter>리소스 파일</Filter>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>

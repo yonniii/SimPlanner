@@ -46,14 +46,22 @@ namespace Project2 {
 	protected:
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Button^  button2;
-	private: System::Windows::Forms::DateTimePicker^  dateTimePicker1;
-	private: System::Windows::Forms::DateTimePicker^  dateTimePicker2;
+	private: System::Windows::Forms::DateTimePicker^  Start;
+	private: System::Windows::Forms::DateTimePicker^  End;
+
+
+
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::TextBox^  Title;
 
 	private: System::Windows::Forms::Label^  label4;
+	private: System::Windows::Forms::DateTimePicker^  StartTime;
+	private: System::Windows::Forms::DateTimePicker^  EndTime;
+	private: System::Windows::Forms::ComboBox^  comboBox1;
+
+
 
 	private:
 		/// <summary>
@@ -71,13 +79,16 @@ namespace Project2 {
 			this->Detail = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
-			this->dateTimePicker2 = (gcnew System::Windows::Forms::DateTimePicker());
+			this->Start = (gcnew System::Windows::Forms::DateTimePicker());
+			this->End = (gcnew System::Windows::Forms::DateTimePicker());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->Title = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->StartTime = (gcnew System::Windows::Forms::DateTimePicker());
+			this->EndTime = (gcnew System::Windows::Forms::DateTimePicker());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->SuspendLayout();
 			// 
 			// Detail
@@ -112,19 +123,19 @@ namespace Project2 {
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &WritePlan::button2_Click);
 			// 
-			// dateTimePicker1
+			// Start
 			// 
-			this->dateTimePicker1->Location = System::Drawing::Point(141, 38);
-			this->dateTimePicker1->Name = L"dateTimePicker1";
-			this->dateTimePicker1->Size = System::Drawing::Size(200, 25);
-			this->dateTimePicker1->TabIndex = 2;
+			this->Start->Location = System::Drawing::Point(141, 38);
+			this->Start->Name = L"Start";
+			this->Start->Size = System::Drawing::Size(200, 25);
+			this->Start->TabIndex = 2;
 			// 
-			// dateTimePicker2
+			// End
 			// 
-			this->dateTimePicker2->Location = System::Drawing::Point(141, 92);
-			this->dateTimePicker2->Name = L"dateTimePicker2";
-			this->dateTimePicker2->Size = System::Drawing::Size(200, 25);
-			this->dateTimePicker2->TabIndex = 2;
+			this->End->Location = System::Drawing::Point(141, 92);
+			this->End->Name = L"End";
+			this->End->Size = System::Drawing::Size(200, 25);
+			this->End->TabIndex = 2;
 			// 
 			// label1
 			// 
@@ -138,7 +149,6 @@ namespace Project2 {
 			this->label1->Size = System::Drawing::Size(60, 30);
 			this->label1->TabIndex = 3;
 			this->label1->Text = L"시작";
-			this->label1->Click += gcnew System::EventHandler(this, &WritePlan::label1_Click);
 			// 
 			// label2
 			// 
@@ -187,18 +197,47 @@ namespace Project2 {
 			this->label4->TabIndex = 3;
 			this->label4->Text = L"내용";
 			// 
+			// StartTime
+			// 
+			this->StartTime->Format = System::Windows::Forms::DateTimePickerFormat::Time;
+			this->StartTime->Location = System::Drawing::Point(379, 37);
+			this->StartTime->Name = L"StartTime";
+			this->StartTime->ShowUpDown = true;
+			this->StartTime->Size = System::Drawing::Size(200, 25);
+			this->StartTime->TabIndex = 5;
+			// 
+			// EndTime
+			// 
+			this->EndTime->Format = System::Windows::Forms::DateTimePickerFormat::Time;
+			this->EndTime->Location = System::Drawing::Point(379, 92);
+			this->EndTime->Name = L"EndTime";
+			this->EndTime->ShowUpDown = true;
+			this->EndTime->Size = System::Drawing::Size(200, 25);
+			this->EndTime->TabIndex = 6;
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(583, 165);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(121, 23);
+			this->comboBox1->TabIndex = 7;
+			// 
 			// WritePlan
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 15);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(743, 415);
+			this->Controls->Add(this->comboBox1);
+			this->Controls->Add(this->EndTime);
+			this->Controls->Add(this->StartTime);
 			this->Controls->Add(this->Title);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->dateTimePicker2);
-			this->Controls->Add(this->dateTimePicker1);
+			this->Controls->Add(this->End);
+			this->Controls->Add(this->Start);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->Detail);
@@ -212,11 +251,62 @@ namespace Project2 {
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->Close();
 	}
+
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (!(this->Title->Text == "")) {
-			StreamWriter^ File = gcnew StreamWriter("title.txt", true);
-			File->Write(this->Title->Text);
-			File->Write(this->Detail->Text);
+
+			// date information
+			int start_year = this->Start->Value.Year;
+			int start_month = this->Start->Value.Month;
+			int start_day = this->Start->Value.Day;
+			int end_year = this->End->Value.Year;
+			int end_month = this->End->Value.Month;
+			int end_day = this->End->Value.Day;
+			string str_start_year = to_string(start_year);
+			string str_start_month = to_string(start_month);
+			string str_start_day = to_string(start_day);
+			string str_end_year = to_string(end_year);
+			string str_end_month = to_string(end_month);
+			string str_end_day = to_string(end_day);
+
+			// make folder
+			string folderName_year = str_start_year + "'s Plan";
+			string folderName_month = str_start_month + "'s Plan";
+			System::String^ FolderName_year = gcnew String(folderName_year.c_str());
+			System::String^ FolderName_month = gcnew String(folderName_month.c_str());
+			System::String^ yearPath = gcnew String(".\\" + FolderName_year);
+			System::String^ monthPath = gcnew String("\\" + FolderName_month);
+			if (!System::IO::Directory::Exists(FolderName_year)) {
+				System::IO::Directory::CreateDirectory(FolderName_year);
+			}
+			if (!System::IO::Directory::Exists(yearPath + "\\" + FolderName_month)) {
+				System::IO::Directory::CreateDirectory(yearPath + "\\" + FolderName_month);
+			}
+
+			// make textfile in folder
+			string textName = str_start_year + "-" + str_start_month + "-" + str_start_day;
+			System::String^ TextName = gcnew String(textName.c_str());
+			StreamWriter^ File = gcnew StreamWriter(yearPath + monthPath + "\\" + TextName + "_Plan.txt", true);
+
+			// period information
+			string startDate;
+			string endDate;
+			if (start_year != end_year) {
+				startDate = str_start_year + "-" + str_start_month + "-" + str_start_day;
+				endDate = str_end_year + "-" + str_end_month + "-" + str_end_day;
+			}
+			else if (start_month != end_month) {
+				startDate = str_start_month + "-" + str_start_day;
+				endDate = str_end_month + "-" + str_end_day;
+			}
+			else if (start_day != end_day) {
+				startDate = str_start_day;
+				endDate = str_end_day;
+			}
+
+			//write textfile
+			File->Write(this->Title->Text + "\r\n");
+			File->Write(this->Detail->Text + "\r\n");
 			File->Close();
 			this->Close();
 		}
@@ -224,7 +314,6 @@ namespace Project2 {
 			MessageBox::Show("제목을 입력해주세요.");
 		}
 	}
-private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
-}
+
 };
 }
